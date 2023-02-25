@@ -44,6 +44,7 @@ const clearAllCompleted = function () {
 </template>
 
 <style lang="less" scoped>
+@emerald: #48e436;
 .helper {
   font-size: 16px;
   line-height: 1.5em;
@@ -62,11 +63,12 @@ const clearAllCompleted = function () {
     display: inline-block;
     padding: 0 10px;
     cursor: pointer;
+    border: 1px solid transparent;
   }
   span.actived {
-    border: 1px solid #48e436;
+    border: 1px solid @emerald;
     border-radius: 5px;
-    color: #48e436;
+    color: @emerald;
   }
 }
 .clear {

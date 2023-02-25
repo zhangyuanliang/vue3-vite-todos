@@ -23,12 +23,13 @@ const toDestory = () => {
 </template>
 
 <style lang="less" scoped>
+@coolGray: #E5E7EB;
 .todo-item {
   position: relative;
   margin-top: 3px;
   font-size: 24px;
-  border-bottom: 1px dashed #a2a1a2;
-  border-top: 1px solid #cccacd;
+  border-bottom: 1px dashed @coolGray;
+  border-top: 1px solid @coolGray;
   label {
     display: block;
     margin-left: 45px;
@@ -42,7 +43,7 @@ const toDestory = () => {
     text-overflow: ellipsis;
   }
   &.finished label {
-    color: #b5b1b1;
+    color: @coolGray;
     text-decoration: line-through;
   }
   &:hover .destory:after {

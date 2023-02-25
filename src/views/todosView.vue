@@ -77,6 +77,7 @@ const clearAllCompleted = () => {
 </template>
 
 <style lang="less" scoped>
+@coolGray: #E5E7EB;
 .main-wrap {
   width: 100%;
   height: 100vh;
@@ -91,13 +92,13 @@ const clearAllCompleted = () => {
     padding: 20px;
     h1 {
       font-size: 50px;
-      color: rgba(175, 47, 47, 0.4);
+      color: #af2f2f66;
     }
   }
   .real-app {
     width: 600px;
     margin: 0 auto;
-    border-left: 1px solid #cccacd;
+    border-left: 1px solid @coolGray;
     box-shadow: 8px 8px 5px #666;
   }
   .add-input {
