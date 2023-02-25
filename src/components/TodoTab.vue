@@ -58,16 +58,16 @@ const clearAllCompleted = function () {
   display: flex;
   justify-content: space-around;
   width: 230px;
-}
-.tabs span {
-  display: inline-block;
-  padding: 0 10px;
-  cursor: pointer;
-}
-.tabs span.actived {
-  border: 1px solid #48e436;
-  border-radius: 5px;
-  color: #48e436;
+  span {
+    display: inline-block;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+  span.actived {
+    border: 1px solid #48e436;
+    border-radius: 5px;
+    color: #48e436;
+  }
 }
 .clear {
   cursor: pointer;

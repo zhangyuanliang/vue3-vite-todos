@@ -3,27 +3,29 @@ import { ref, reactive, computed, watch } from 'vue';
 import TodoItem from '@/components/TodoItem.vue';
 import TodoTab from '@/components/TodoTab.vue';
 
-const todos = ref([
-  {
-    finished: false,
-    id: 0,
-    title: 'This is a Demo',
-  },
-]);
+const state = reactive({
+  todos: [
+    {
+      finished: false,
+      id: 0,
+      title: 'This is a Demo',
+    },
+  ],
+});
 const newTodo = ref('');
 const filter = ref('all');
-const nextTodoId = ref(0);
-const scrollbarRef = ref('')
+const nextTodoId = ref(1);
+const scrollbarRef = ref('');
 
 const filterTodos = computed(() => {
   if (filter.value == 'all') {
-    return todos.value;
+    return state.todos;
   }
   const finished = filter.value === 'completed';
-  return todos.value.filter((todo) => todo.finished === finished);
+  return state.todos.filter((todo) => todo.finished === finished);
 });
 
-watch(todos, (currTodos, oldTodos) => {
+watch(state.todos, (currTodos, oldTodos) => {
   var ids = currTodos.map((todo) => todo.id);
   nextTodoId.value = Math.max.apply(null, ids) + 1;
 });
@@ -32,17 +34,17 @@ const addTodo = () => {
   if (!newTodo.value) {
     return false;
   }
-  todos.value.unshift({
+  state.todos.unshift({
     id: nextTodoId.value,
     title: newTodo.value,
     finished: false,
   });
   newTodo.value = '';
-  scrollbarRef.value.setScrollTop(0)
+  scrollbarRef.value.setScrollTop(0);
 };
 const removeTodo = (todoId) => {
-  todos.value.splice(
-    todos.value.findIndex((todo) => todo.id === todoId),
+  state.todos.splice(
+    state.todos.findIndex((todo) => todo.id === todoId),
     1
   );
 };
@@ -50,7 +52,7 @@ const updateFilter = (state) => {
   filter.value = state;
 };
 const clearAllCompleted = () => {
-  todos.value = todos.value.filter((todo) => !todo.finished);
+  state.todos = state.todos.filter((todo) => !todo.finished);
 };
 </script>
 
@@ -66,7 +68,7 @@ const clearAllCompleted = () => {
       </el-scrollbar>
       <TodoTab
         :filter="filter"
-        :todos="todos"
+        :todos="state.todos"
         @changeFilter="updateFilter"
         @toClearAllCompleted="clearAllCompleted"
       ></TodoTab>
@@ -86,15 +88,16 @@ const clearAllCompleted = () => {
   font-weight: 500;
   .main-header {
     text-align: center;
-  }
-  .main-header h1 {
-    font-size: 50px;
-    color: rgba(175, 47, 47, 0.4);
-    margin: 20px;
+    padding: 20px;
+    h1 {
+      font-size: 50px;
+      color: rgba(175, 47, 47, 0.4);
+    }
   }
   .real-app {
     width: 600px;
     margin: 0 auto;
+    border-left: 1px solid #cccacd;
     box-shadow: 8px 8px 5px #666;
   }
   .add-input {

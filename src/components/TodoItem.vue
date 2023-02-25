@@ -12,7 +12,6 @@ const toggleFinish = (todo) => {
 const toDestory = () => {
   emit('destoryTodo', props.todo.id);
 };
-
 </script>
 
 <template>
@@ -30,22 +29,25 @@ const toDestory = () => {
   font-size: 24px;
   border-bottom: 1px dashed #a2a1a2;
   border-top: 1px solid #cccacd;
-}
-.todo-item label {
-  display: block;
-  margin-left: 45px;
-  padding: 15px 60px 15px 15px;
-  line-height: 1.2;
-  color: #34373b;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 400;
-}
-.todo-item:hover .destory:after {
-  content: 'x';
-}
-.todo-item.finished label {
-  color: #b5b1b1;
-  text-decoration: line-through;
+  label {
+    display: block;
+    margin-left: 45px;
+    padding: 15px 44px 15px 15px;
+    line-height: 1.2;
+    color: #34373b;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    max-width: 554px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &.finished label {
+    color: #b5b1b1;
+    text-decoration: line-through;
+  }
+  &:hover .destory:after {
+    content: 'x';
+  }
 }
 .toggle {
   position: absolute;
@@ -58,12 +60,12 @@ const toDestory = () => {
   appearance: none;
   outline: none;
   cursor: pointer;
-}
-.toggle:after {
-  content: url('https://photo.qihaikj.com/round.svg');
-}
-.toggle:checked:after {
-  content: url('https://photo.qihaikj.com/done.svg');
+  &:after {
+    content: url('https://photo.qihaikj.com/round.svg');
+  }
+  &:checked:after {
+    content: url('https://photo.qihaikj.com/done.svg');
+  }
 }
 
 .destory {
