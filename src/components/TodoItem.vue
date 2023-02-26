@@ -23,7 +23,7 @@ const toDestory = () => {
 </template>
 
 <style lang="less" scoped>
-@coolGray: #E5E7EB;
+@coolGray: #e5e7eb;
 .todo-item {
   position: relative;
   margin-top: 3px;
@@ -49,6 +49,21 @@ const toDestory = () => {
   &:hover .destory:after {
     content: 'x';
   }
+  .destory {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    margin: auto 0;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #FCA5A5;
+    font-size: 25px;
+    cursor: pointer;
+  }
 }
 .toggle {
   position: absolute;
@@ -62,26 +77,10 @@ const toDestory = () => {
   outline: none;
   cursor: pointer;
   &:after {
-    content: url('https://photo.qihaikj.com/round.svg');
+    content: url('@/assets/images/round.svg');
   }
   &:checked:after {
-    content: url('https://photo.qihaikj.com/done.svg');
+    content: url('@/assets/images/done.svg');
   }
-}
-
-.destory {
-  position: absolute;
-  top: 0;
-  right: 10px;
-  bottom: 0;
-  margin: auto 0;
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  color: #da7274;
-  font-size: 25px;
-  cursor: pointer;
 }
 </style>

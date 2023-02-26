@@ -86,7 +86,7 @@ const clearAllCompleted = () => {
 .main-wrap {
   width: 100%;
   height: 100vh;
-  background: url('https://photo.qihaikj.com/bg-image.jpg');
+  background: url('@/assets/images/bg-image.jpg');
   background-size: cover;
   background-position: center;
   font: 14px 'microsoft yahei';
