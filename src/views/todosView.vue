@@ -62,20 +62,22 @@ const clearAllCompleted = () => {
     <header class="main-header">
       <h1>JTodo</h1>
     </header>
-    <section class="real-app">
-      <input type="text" class="add-input" placeholder="接下来要做什么？" v-model="newTodo" @keyup.enter="addTodo" />
-      <el-scrollbar ref="scrollbarRef" height="60vh">
-        <transition-group enter-active-class="animate__animated animate__bounceInRight" leave-active-class="animate__animated animate__bounceOutRight">
-          <TodoItem v-for="todo in filterTodos" @destoryTodo="removeTodo" :todo="todo" :key="todo.id"></TodoItem>
-        </transition-group>
-      </el-scrollbar>
-      <TodoTab
-        :filter="filter"
-        :todos="state.todos"
-        @changeFilter="updateFilter"
-        @toClearAllCompleted="clearAllCompleted"
-      ></TodoTab>
-    </section>
+    <transition appear enter-active-class="animate__animated animate__bounceIn">
+      <section class="real-app">
+        <input type="text" class="add-input" placeholder="接下来要做什么？" v-model="newTodo" @keyup.enter="addTodo" />
+        <el-scrollbar ref="scrollbarRef" height="60vh">
+          <transition-group enter-active-class="animate__animated animate__bounceInRight" leave-active-class="animate__animated animate__bounceOutRight">
+            <TodoItem v-for="todo in filterTodos" @destoryTodo="removeTodo" :todo="todo" :key="todo.id"></TodoItem>
+          </transition-group>
+        </el-scrollbar>
+        <TodoTab
+          :filter="filter"
+          :todos="state.todos"
+          @changeFilter="updateFilter"
+          @toClearAllCompleted="clearAllCompleted"
+        ></TodoTab>
+      </section>
+    </transition>
   </div>
 </template>
 
