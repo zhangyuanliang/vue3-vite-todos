@@ -2,6 +2,7 @@
 import { ref, reactive, computed, watch } from 'vue';
 import TodoItem from '@/components/TodoItem.vue';
 import TodoTab from '@/components/TodoTab.vue';
+import 'animate.css';
 
 const state = reactive({
   todos: [
@@ -64,7 +65,9 @@ const clearAllCompleted = () => {
     <section class="real-app">
       <input type="text" class="add-input" placeholder="接下来要做什么？" v-model="newTodo" @keyup.enter="addTodo" />
       <el-scrollbar ref="scrollbarRef" height="60vh">
-        <TodoItem v-for="todo in filterTodos" @destoryTodo="removeTodo" :todo="todo" :key="todo.id"></TodoItem>
+        <transition-group enter-active-class="animate__animated animate__bounceInRight" leave-active-class="animate__animated animate__bounceOutRight">
+          <TodoItem v-for="todo in filterTodos" @destoryTodo="removeTodo" :todo="todo" :key="todo.id"></TodoItem>
+        </transition-group>
       </el-scrollbar>
       <TodoTab
         :filter="filter"
@@ -77,7 +80,7 @@ const clearAllCompleted = () => {
 </template>
 
 <style lang="less" scoped>
-@coolGray: #E5E7EB;
+@coolGray: #e5e7eb;
 .main-wrap {
   width: 100%;
   height: 100vh;
@@ -110,6 +113,15 @@ const clearAllCompleted = () => {
     padding: 16px 16px 16px 36px;
     border: none;
     outline: none;
+  }
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.5s ease;
+  }
+  .list-enter-from,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
   }
 }
 </style>
